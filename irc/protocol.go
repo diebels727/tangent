@@ -1,3 +1,4 @@
+// Package irc provides supporting protocol functionality for tangent
 package irc
 
 import (
