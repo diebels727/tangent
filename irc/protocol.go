@@ -7,7 +7,8 @@ import (
 
 // A single line from the IRC server
 type Line struct {
-    Nick, Ident, Host, Src string
+    HostMask
+    Src string
 	Cmd, Raw string
 	Args     []string
 }
@@ -21,6 +22,7 @@ func ParseLine(s string) *Line {
         } else {
             return nil
         }
+        line.HostMask = *Parse(line.Src)
     }
     args := strings.SplitN(s, " :", 2)
     if len(args) > 1 {
